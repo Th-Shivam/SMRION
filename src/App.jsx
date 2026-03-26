@@ -8,21 +8,12 @@ import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
-      <div className="fixed inset-0 micro-noise z-[100]"></div>
+    <div className="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden relative">
+      <div className="fixed inset-0 micro-noise z-[100] pointer-events-none"></div>
       
       <Navbar />
       
       <main className="relative pt-24">
-        {/* Grid Background Overlay */}
-        <div 
-          className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none" 
-          style={{ 
-            backgroundImage: 'linear-gradient(#494454 1px, transparent 1px), linear-gradient(90deg, #494454 1px, transparent 1px)', 
-            backgroundSize: '32px 32px' 
-          }}
-        ></div>
-        
         <Hero />
         <Lifecycle />
         <Evolution />

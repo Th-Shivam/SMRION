@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SMRION | Persistent AI Memory Infrastructure</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&amp;family=Inter:wght@300;400;600&amp;family=Space+Grotesk:wght@300;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary-container": "#a078ff",
+                "primary": "#d0bcff",
+                "surface-tint": "#d0bcff",
+                "tertiary-fixed": "#e5e2e1",
+                "on-primary": "#3c0091",
+                "surface-container-highest": "#353534",
+                "outline": "#958ea0",
+                "on-tertiary-container": "#2a2a29",
+                "inverse-on-surface": "#313030",
+                "primary-fixed": "#e9ddff",
+                "on-primary-fixed": "#23005c",
+                "tertiary-fixed-dim": "#c8c6c5",
+                "secondary-container": "#0566d9",
+                "surface-container-lowest": "#0e0e0e",
+                "on-secondary": "#002e6a",
+                "on-surface": "#e5e2e1",
+                "error-container": "#93000a",
+                "secondary-fixed-dim": "#adc6ff",
+                "secondary-fixed": "#d8e2ff",
+                "outline-variant": "#494454",
+                "on-secondary-fixed-variant": "#004395",
+                "surface-variant": "#353534",
+                "surface-bright": "#3a3939",
+                "on-surface-variant": "#cbc3d7",
+                "on-primary-fixed-variant": "#5516be",
+                "tertiary": "#c8c6c5",
+                "on-background": "#e5e2e1",
+                "on-error": "#690005",
+                "on-error-container": "#ffdad6",
+                "surface-container-low": "#1c1b1b",
+                "surface": "#131313",
+                "background": "#131313",
+                "tertiary-container": "#929090",
+                "inverse-primary": "#6d3bd7",
+                "on-tertiary-fixed": "#1c1b1b",
+                "on-tertiary": "#313030",
+                "on-secondary-container": "#e6ecff",
+                "surface-container-high": "#2a2a2a",
+                "primary-fixed-dim": "#d0bcff",
+                "inverse-surface": "#e5e2e1",
+                "surface-dim": "#131313",
+                "on-primary-container": "#340080",
+                "error": "#ffb4ab",
+                "surface-container": "#201f1f",
+                "secondary": "#adc6ff",
+                "on-tertiary-fixed-variant": "#474646",
+                "on-secondary-fixed": "#001a42"
+              },
+              fontFamily: {
+                "headline": ["Manrope"],
+                "body": ["Inter"],
+                "label": ["Space Grotesk"]
+              },
+              borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            },
+          },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(53, 53, 52, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(73, 68, 84, 0.15);
+        }
+        .micro-noise {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.02;
+            pointer-events: none;
+        }
+        .glow-line {
+            background: linear-gradient(90deg, transparent, #d0bcff, transparent);
+        }
+        .neural-node {
+            box-shadow: 0 0 15px rgba(208, 188, 255, 0.4);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-float-delayed { animation: float 6s ease-in-out infinite 3s; }
+        @keyframes flow {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .animate-flow {
+            background: linear-gradient(90deg, transparent, rgba(208, 188, 255, 0.3), transparent);
+            background-size: 200% 100%;
+            animation: flow 3s infinite linear;
+        }
+        .node-broken { opacity: 0.3; filter: blur(1px); }
+        .node-active { filter: drop-shadow(0 0 8px #d0bcff); }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<div class="fixed inset-0 micro-noise z-[100]"></div>
+<!-- Top Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 bg-[#131313]/40 backdrop-blur-xl shadow-[0_0_15px_rgba(160,120,255,0.1)]">
+<div class="flex justify-between items-center px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="text-xl font-bold tracking-tighter text-[#e5e2e1] font-headline">SMRION</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-manrope tracking-tight text-sm uppercase font-semibold text-[#d0bcff] border-b border-[#d0bcff]/50 pb-1 hover:text-[#d0bcff] transition-all duration-300 ease-in-out" href="#">Product</a>
+<a class="font-manrope tracking-tight text-sm uppercase font-semibold text-[#e5e2e1]/60 hover:text-[#d0bcff] transition-all duration-300 ease-in-out" href="#">Infrastructure</a>
+<a class="font-manrope tracking-tight text-sm uppercase font-semibold text-[#e5e2e1]/60 hover:text-[#d0bcff] transition-all duration-300 ease-in-out" href="#">Docs</a>
+<a class="font-manrope tracking-tight text-sm uppercase font-semibold text-[#e5e2e1]/60 hover:text-[#d0bcff] transition-all duration-300 ease-in-out" href="#">GitHub</a>
+</div>
+<button class="bg-primary-container text-on-primary-container px-5 py-2 rounded-lg font-label text-xs font-bold tracking-widest uppercase scale-95 active:scale-90 transition-transform shadow-[0_0_15px_rgba(160,120,255,0.3)] hover:shadow-[0_0_25px_rgba(160,120,255,0.5)] transition-all duration-300">
+                Connect API
+            </button>
+</div>
+</nav>
+<main class="relative pt-24">
+<!-- Grid Background Overlay -->
+<div class="absolute inset-0 z-0 opacity-[0.05] pointer-events-none" style="background-image: linear-gradient(#494454 1px, transparent 1px), linear-gradient(90deg, #494454 1px, transparent 1px); background-size: 32px 32px;"></div>
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex flex-col items-center justify-center px-6 overflow-hidden">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="z-10 text-center max-w-5xl">
+<span class="font-label text-primary text-xs tracking-[0.3em] uppercase mb-4 block">Redefining LLM Statefulness</span>
+<h1 class="font-headline text-5xl md:text-8xl font-extrabold tracking-tight leading-[1.1] text-on-surface mb-8">
+                    AI That <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Remembers.</span><br/>Like It Should Have.
+                </h1>
+<p class="font-body text-on-surface-variant text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+                    SMRION is a persistent memory layer that transforms stateless AI into evolving intelligence. Build models that learn with every interaction.
+                </p>
+<div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-headline font-bold text-lg hover:shadow-[0_0_30px_rgba(208,188,255,0.4)] transition-all duration-500 group">
+                        Deploy Memory Layer
+                        <span class="material-symbols-outlined align-middle ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="glass-panel text-on-surface px-8 py-4 rounded-xl font-headline font-bold text-lg hover:bg-surface-container-highest transition-all duration-300">
+                        View Documentation
+                    </button>
+</div>
+</div>
+<!-- Floating UI Demo -->
+<div class="relative mt-24 w-full max-w-4xl mx-auto z-20">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+<div class="glass-panel p-6 rounded-2xl relative">
+<div class="absolute -top-3 left-6 bg-surface px-3 py-1 text-[10px] font-label text-primary border border-primary/20 rounded-full">USER QUERY</div>
+<p class="text-sm font-label text-on-surface-variant italic">"Recall the architecture diagram we discussed last Tuesday regarding the vector node sync."</p>
+</div>
+<div class="hidden md:flex justify-center">
+<div class="h-[1px] w-full glow-line relative">
+<div class="absolute -top-1 left-1/2 w-2 h-2 rounded-full bg-primary neural-node animate-pulse"></div>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-2xl border-primary/30 ring-1 ring-primary/20 relative shadow-[0_0_40px_rgba(160,120,255,0.1)]">
+<div class="absolute -top-3 left-6 bg-primary text-on-primary px-3 py-1 text-[10px] font-label font-bold rounded-full">MEMORY RETRIEVED</div>
+<div class="space-y-2">
+<div class="h-1.5 w-full bg-primary/20 rounded"></div>
+<div class="h-1.5 w-3/4 bg-primary/20 rounded"></div>
+<div class="flex items-center gap-2 mt-4">
+<span class="material-symbols-outlined text-primary text-sm">database</span>
+<span class="text-[10px] font-label text-primary">Node ID: 8821-X</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- System Flow Visual Pipeline -->
+<section class="py-32 px-8 bg-surface-container-low/30 relative">
+<div class="max-w-7xl mx-auto text-center mb-24">
+<h2 class="font-headline text-4xl font-bold mb-4">The Neural Lifecycle</h2>
+<p class="font-body text-on-surface-variant max-w-xl mx-auto">Continuous context injection through high-velocity retrieval paths.</p>
+</div>
+<div class="relative flex flex-col md:flex-row items-center justify-between gap-8 max-w-6xl mx-auto">
+<div class="flex flex-col items-center gap-4 group">
+<div class="w-16 h-16 rounded-full glass-panel flex items-center justify-center text-primary group-hover:shadow-[0_0_20px_rgba(208,188,255,0.3)] transition-all duration-500">
+<span class="material-symbols-outlined text-3xl">input</span>
+</div>
+<span class="font-label text-xs tracking-widest uppercase">User Input</span>
+</div>
+<div class="flex-1 h-px bg-outline-variant/30 relative hidden md:block">
+<div class="absolute top-0 left-0 h-full w-1/3 bg-primary glow-line animate-[move_3s_infinite_linear]"></div>
+</div>
+<div class="flex flex-col items-center gap-4 group">
+<div class="w-16 h-16 rounded-full glass-panel flex items-center justify-center text-secondary group-hover:shadow-[0_0_20px_rgba(173,198,255,0.3)] transition-all duration-500">
+<span class="material-symbols-outlined text-3xl">psychology</span>
+</div>
+<span class="font-label text-xs tracking-widest uppercase">Memory Layer</span>
+</div>
+<div class="flex-1 h-px bg-outline-variant/30 relative hidden md:block">
+<div class="absolute top-0 left-1/3 h-full w-1/3 bg-secondary glow-line"></div>
+</div>
+<div class="flex flex-col items-center gap-4 group">
+<div class="w-16 h-16 rounded-full glass-panel flex items-center justify-center text-tertiary group-hover:shadow-[0_0_20px_rgba(229,226,225,0.3)] transition-all duration-500">
+<span class="material-symbols-outlined text-3xl">memory</span>
+</div>
+<span class="font-label text-xs tracking-widest uppercase">Context Injection</span>
+</div>
+<div class="flex-1 h-px bg-outline-variant/30 relative hidden md:block">
+<div class="absolute top-0 left-2/3 h-full w-1/3 bg-primary glow-line"></div>
+</div>
+<div class="flex flex-col items-center gap-4 group">
+<div class="w-20 h-20 rounded-2xl glass-panel flex items-center justify-center text-primary border-primary/40 shadow-[0_0_30px_rgba(160,120,255,0.2)]">
+<span class="material-symbols-outlined text-4xl">rocket_launch</span>
+</div>
+<span class="font-label text-xs font-bold tracking-widest uppercase text-primary">Smarter Output</span>
+</div>
+</div>
+</section>
+<!-- REDESIGNED TRANSFORMATION SECTION -->
+<section class="relative py-40 overflow-hidden bg-surface-container-lowest">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-gradient-to-b from-outline-variant/0 via-primary/50 to-outline-variant/0 z-20 hidden md:block">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-surface border border-primary px-4 py-2 rounded-full shadow-[0_0_30px_rgba(208,188,255,0.3)] z-30">
+<span class="font-label text-[10px] tracking-widest uppercase text-primary font-bold whitespace-nowrap">SMRION Memory Layer</span>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 relative z-10">
+<div class="text-center mb-24">
+<h2 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter mb-4">The Evolution of Logic</h2>
+<p class="font-body text-on-surface-variant max-w-2xl mx-auto text-lg">From stateless responses to evolving intelligence — powered by memory.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 relative">
+<!-- LEFT SIDE: Stateless AI -->
+<div class="space-y-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
+<div class="text-right md:pr-12">
+<span class="font-label text-xs tracking-widest uppercase text-on-surface-variant mb-2 block">Before SMRION</span>
+<h3 class="font-headline text-3xl font-light text-on-surface-variant">Stateless AI</h3>
+</div>
+<div class="relative h-[400px] flex items-center justify-center">
+<!-- Visual: Fragmented/Fading Nodes -->
+<div class="absolute inset-0 flex flex-wrap gap-4 items-center justify-center p-8">
+<div class="w-12 h-12 rounded-lg bg-outline-variant/10 border border-outline-variant/20 flex items-center justify-center node-broken animate-pulse">
+<span class="material-symbols-outlined text-outline-variant/30">blur_on</span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-outline-variant/10 border border-outline-variant/20 flex items-center justify-center node-broken translate-y-8">
+<span class="material-symbols-outlined text-outline-variant/30">cloud_off</span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-outline-variant/10 border border-outline-variant/20 flex items-center justify-center node-broken -translate-x-4">
+<span class="material-symbols-outlined text-outline-variant/30">history</span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-outline-variant/10 border border-outline-variant/20 flex items-center justify-center node-broken translate-x-12 -translate-y-4">
+<span class="material-symbols-outlined text-outline-variant/30">sync_problem</span>
+</div>
+</div>
+<!-- Layered Glass Panel -->
+<div class="glass-panel p-8 rounded-3xl w-full max-w-sm absolute -rotate-2 transform transition-transform hover:rotate-0">
+<ul class="space-y-6">
+<li class="flex items-start gap-4 text-on-surface-variant/70">
+<span class="material-symbols-outlined mt-1 text-sm">remove_circle_outline</span>
+<div>
+<p class="font-bold text-sm uppercase font-label">No memory retention</p>
+<p class="text-xs">Each request is a fresh start with zero context.</p>
+</div>
+</li>
+<li class="flex items-start gap-4 text-on-surface-variant/70">
+<span class="material-symbols-outlined mt-1 text-sm">history</span>
+<div>
+<p class="font-bold text-sm uppercase font-label">Context resets every session</p>
+<p class="text-xs">Limited to short-term context window tokens.</p>
+</div>
+</li>
+<li class="flex items-start gap-4 text-on-surface-variant/70">
+<span class="material-symbols-outlined mt-1 text-sm">fragment_stack</span>
+<div>
+<p class="font-bold text-sm uppercase font-label">Fragmented intelligence</p>
+<p class="text-xs">Identical users receive generic responses.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- RIGHT SIDE: SMRION -->
+<div class="space-y-12 group">
+<div class="md:pl-12">
+<span class="font-label text-xs tracking-widest uppercase text-primary mb-2 block">After SMRION</span>
+<h3 class="font-headline text-3xl font-bold text-on-surface">Evolving Intelligence</h3>
+</div>
+<div class="relative h-[400px] flex items-center justify-center">
+<!-- Visual: Glowing Connected Neural Network -->
+<div class="absolute inset-0 z-0">
+<svg class="w-full h-full opacity-30" viewbox="0 0 400 400">
+<circle class="animate-pulse" cx="150" cy="150" fill="#d0bcff" r="3"></circle>
+<circle class="animate-pulse" cx="250" cy="180" fill="#d0bcff" r="3" style="animation-delay: 1s"></circle>
+<circle class="animate-pulse" cx="180" cy="250" fill="#d0bcff" r="3" style="animation-delay: 2s"></circle>
+<path class="animate-flow" d="M150 150 L250 180 L180 250 Z" fill="none" stroke="#d0bcff" stroke-width="0.5"></path>
+</svg>
+</div>
+<!-- Deep Layered Glass Panels -->
+<div class="relative w-full max-w-sm">
+<div class="absolute inset-0 bg-primary/20 blur-[80px] rounded-full group-hover:bg-primary/30 transition-colors"></div>
+<div class="glass-panel p-8 rounded-3xl relative z-10 border-primary/30 shadow-[0_20px_50px_rgba(160,120,255,0.2)] rotate-2 transform transition-transform hover:rotate-0">
+<ul class="space-y-6">
+<li class="flex items-start gap-4">
+<div class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary mt-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div>
+<p class="font-bold text-sm uppercase font-label text-primary">Persistent across sessions</p>
+<p class="text-xs text-on-surface-variant">Infinite memory span across every interaction.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<div class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary mt-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<p class="font-bold text-sm uppercase font-label text-primary">Hybrid Retrieval</p>
+<p class="text-xs text-on-surface-variant">Combined semantic search + structured indexing.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<div class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary mt-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+<div>
+<p class="font-bold text-sm uppercase font-label text-primary">Evolving Intelligence</p>
+<p class="text-xs text-on-surface-variant">AI that genuinely grows smarter over time.</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- Background depth panel -->
+<div class="absolute -top-4 -right-4 w-full h-full glass-panel rounded-3xl -z-10 opacity-30"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Core Engine System Modules -->
+<section class="py-32 px-8 max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+<div class="max-w-xl">
+<h2 class="font-headline text-5xl font-extrabold mb-4 tracking-tighter">The Memory Stack</h2>
+<p class="font-body text-on-surface-variant">Built for engineers scaling personalized LLM agents at production levels.</p>
+</div>
+<div class="font-label text-xs tracking-widest text-primary font-bold">CORE MODULES v1.0.4</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]">
+<div class="md:col-span-8 glass-panel rounded-3xl p-10 flex flex-col justify-between group hover:border-primary/40 transition-all duration-500 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-8">
+<span class="material-symbols-outlined text-6xl text-primary/10 group-hover:text-primary/20 transition-colors">hub</span>
+</div>
+<div>
+<span class="font-label text-xs uppercase text-primary mb-4 block">Engine 01</span>
+<h4 class="font-headline text-3xl font-bold mb-4">Hybrid Retrieval Engine</h4>
+<p class="font-body text-on-surface-variant max-w-md">Combines vector similarity with graph-based relational memory for 99.9% accuracy in context retrieval.</p>
+</div>
+<div class="flex gap-4 mt-8">
+<div class="px-4 py-2 bg-surface-container-highest rounded-lg text-xs font-label text-on-surface">Sub-50ms Latency</div>
+<div class="px-4 py-2 bg-surface-container-highest rounded-lg text-xs font-label text-on-surface">Auto-Sharding</div>
+</div>
+</div>
+<div class="md:col-span-4 glass-panel rounded-3xl p-10 flex flex-col group hover:border-secondary/40 transition-all duration-500">
+<div class="mb-auto">
+<span class="font-label text-xs uppercase text-secondary mb-4 block">Engine 02</span>
+<h4 class="font-headline text-2xl font-bold mb-4">Memory Indexing</h4>
+<p class="font-body text-on-surface-variant text-sm">Automated summarization and embedding of every interaction into a hierarchical graph.</p>
+</div>
+<img alt="Tech Detail" class="w-full h-32 object-cover rounded-xl mt-8 grayscale hover:grayscale-0 transition-all duration-500" data-alt="Extreme close-up of a high-tech processor chip with microscopic circuits and glowing traces of blue light reflecting on metal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3qwM1L7LMx6O2nwADE-czu2l6lACvDqz10HS0e4cK0iTmOfDmQeFmOE_3yc0vcNktvWLtS_7pdhzPjKzufROlX79203wuLKq2Ewi02Ew--3O5aw80L78oIQygaqM_iUr6fvnRa0orENnobkjp6eTM2V8loA8V4qlfINjJ134p3tHgESacAm-59UCnyv6Qap9AV7Bn0YC2HYmY1s0ODaigEz5UOGkEeGDq1mMjPota_ReR5gz2KkzZpC3zJSUiDAvIfOpCKHLZNGE"/>
+</div>
+<div class="md:col-span-4 glass-panel rounded-3xl p-10 flex flex-col group hover:border-tertiary/40 transition-all duration-500">
+<span class="font-label text-xs uppercase text-tertiary mb-4 block">Engine 03</span>
+<h4 class="font-headline text-2xl font-bold mb-4">Context Injection Layer</h4>
+<p class="font-body text-on-surface-variant text-sm">Dynamically re-writes system prompts on-the-fly to include historical context without token overflow.</p>
+</div>
+<div class="md:col-span-8 glass-panel rounded-3xl p-10 bg-gradient-to-r from-surface-container-high to-primary/5 flex items-center justify-between group">
+<div class="max-w-sm">
+<h4 class="font-headline text-2xl font-bold mb-2">Global Node Sync</h4>
+<p class="font-body text-on-surface-variant text-sm">Sync memory across 14 global regions in real-time, ensuring zero-latency for mobile-first agents.</p>
+</div>
+<div class="hidden md:block w-32 h-32 rounded-full border-2 border-dashed border-primary/20 flex items-center justify-center group-hover:rotate-180 transition-transform duration-[2000ms]">
+<span class="material-symbols-outlined text-4xl text-primary">language</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Live Intelligence Demo -->
+<section class="py-32 px-6 overflow-hidden">
+<div class="max-w-4xl mx-auto glass-panel rounded-[2rem] p-1 border-primary/10 shadow-[0_0_100px_rgba(160,120,255,0.05)]">
+<div class="bg-surface rounded-[1.8rem] p-8 md:p-12">
+<div class="flex items-center gap-4 mb-12">
+<div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+<div class="w-3 h-3 rounded-full bg-amber-500/50"></div>
+<div class="w-3 h-3 rounded-full bg-emerald-500/50"></div>
+<div class="ml-4 font-label text-[10px] tracking-widest text-on-surface-variant">SMRION-O1-PREVIEW</div>
+</div>
+<div class="space-y-10">
+<div class="flex gap-6">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-xs font-bold">USER</div>
+<div class="flex-1">
+<p class="text-on-surface font-body leading-relaxed">"Help me optimize my Postgres queries for the new node architecture."</p>
+<div class="mt-4 p-4 rounded-xl bg-primary/5 border border-primary/10 text-xs font-label text-primary flex items-center gap-3">
+<span class="material-symbols-outlined text-sm">lightbulb</span>
+                                    SYSTEM: Accessing memory shard #442 (Session date: Oct 12)
+                                </div>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-on-primary-container text-xs font-bold shadow-[0_0_15px_rgba(160,120,255,0.4)]">AI</div>
+<div class="flex-1">
+<p class="text-on-surface font-body leading-relaxed">"Based on the node architecture we discussed last session, you should focus on indexing the <span class="text-primary font-semibold">`deployment_id`</span>. I recall you're using a sharded table structure, so here is the optimized SQL:"</p>
+<div class="mt-4 p-6 bg-surface-container-lowest rounded-xl font-mono text-sm border border-outline-variant/10 text-secondary-fixed-dim">
+                                    CREATE INDEX idx_node_deploy ON deployments(id) WHERE active = true;
+                                </div>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-xs font-bold">USER</div>
+<div class="flex-1">
+<p class="text-on-surface font-body leading-relaxed">"That worked perfectly. Now apply that logic to the Python worker."</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-32 px-6 text-center relative">
+<div class="absolute inset-0 bg-primary/5 blur-[150px] pointer-events-none"></div>
+<h2 class="font-headline text-5xl md:text-7xl font-extrabold mb-8 tracking-tighter">Your AI is waiting to learn.</h2>
+<button class="bg-on-surface text-background px-12 py-6 rounded-2xl font-headline font-black text-xl hover:scale-105 transition-transform shadow-[0_10px_40px_rgba(229,226,225,0.2)]">
+                GET API ACCESS NOW
+            </button>
+<p class="mt-8 font-label text-xs tracking-widest text-on-surface-variant uppercase">Start for free. Pay as you scale.</p>
+</section>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full border-t border-[#494454]/15 bg-[#0e0e0e]">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-8 w-full max-w-screen-2xl mx-auto">
+<div class="text-lg font-black text-[#e5e2e1] font-headline mb-4 md:mb-0">SMRION</div>
+<div class="flex flex-wrap justify-center gap-8 mb-4 md:mb-0">
+<a class="font-space-grotesk text-[10px] tracking-widest uppercase text-[#e5e2e1]/40 hover:text-[#e5e2e1] transition-colors" href="#">Privacy Policy</a>
+<a class="font-space-grotesk text-[10px] tracking-widest uppercase text-[#e5e2e1]/40 hover:text-[#e5e2e1] transition-colors" href="#">Terms of Service</a>
+<a class="font-space-grotesk text-[10px] tracking-widest uppercase text-[#e5e2e1]/40 hover:text-[#e5e2e1] transition-colors" href="#">Status</a>
+<a class="font-space-grotesk text-[10px] tracking-widest uppercase text-[#e5e2e1]/40 hover:text-[#e5e2e1] transition-colors" href="#">Network Nodes</a>
+</div>
+<div class="font-space-grotesk text-[10px] tracking-widest uppercase text-[#e5e2e1]/40">
+                © 2024 SMRION INFRASTRUCTURE. ALL RIGHTS RESERVED.
+            </div>
+</div>
+</footer>
+</body></html>

@@ -82,3 +82,163 @@
 
 .node-broken { opacity: 0.2; filter: blur(2px); }
 .node-active { filter: drop-shadow(0 0 12px #d0bcff); border-color: #d0bcff; }
+
+.memory-loop-noise {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px),
+    radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.02) 0 1px, transparent 1px),
+    radial-gradient(circle at 60% 80%, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.55'/%3E%3C/svg%3E");
+  background-size: 240px 240px, 300px 300px, 360px 360px, 180px 180px;
+  opacity: 0.08;
+  mix-blend-mode: soft-light;
+}
+
+.memory-loop-node {
+  background:
+    linear-gradient(180deg, rgba(20, 24, 42, 0.92) 0%, rgba(7, 8, 18, 0.98) 100%);
+  border: 1px solid rgba(184, 191, 255, 0.16);
+  box-shadow:
+    0 18px 36px rgba(0, 0, 0, 0.52),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition:
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.45s ease,
+    box-shadow 0.45s ease,
+    filter 0.45s ease;
+}
+
+.memory-loop-node:hover {
+  border-color: rgba(208, 188, 255, 0.5);
+  box-shadow:
+    0 22px 44px rgba(0, 0, 0, 0.62),
+    0 0 28px rgba(117, 129, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.memory-loop-node-active {
+  border-color: rgba(208, 188, 255, 0.58);
+}
+
+.memory-loop-micro-label {
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  transform: translateY(2px);
+}
+
+.group:hover .memory-loop-micro-label,
+.memory-loop-micro-label.opacity-100 {
+  transform: translateY(0);
+}
+
+.memory-orbit-spin {
+  transform-origin: 50% 50%;
+  animation: memoryOrbitSpin 32s linear infinite;
+}
+
+.memory-pulse-wave {
+  animation: memoryPulseWave 5.6s linear infinite;
+}
+
+.memory-arrow-system {
+  transform-origin: 300px 300px;
+  animation: memoryOrbitSpin 10.8s linear infinite;
+}
+
+.memory-orbit-particles {
+  animation: memoryOrbitSpin 12s linear infinite;
+}
+
+.memory-orbit-particles-slow {
+  animation: memoryOrbitSpin 18s linear infinite;
+}
+
+.memory-orbit-particles-reverse {
+  animation: memoryOrbitReverse 22s linear infinite;
+}
+
+.memory-orbit-particle {
+  position: absolute;
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(214, 194, 255, 0.86) 38%, rgba(104, 162, 255, 0.12) 74%, transparent 100%);
+  opacity: 0.95;
+}
+
+@keyframes memoryOrbitSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes memoryOrbitReverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes memoryPulseWave {
+  from { stroke-dashoffset: 1458; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes memoryFloat {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.18;
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+    opacity: 0.5;
+  }
+}
+
+@keyframes memoryFloatSlow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.12;
+  }
+  50% {
+    transform: translate3d(8px, -14px, 0);
+    opacity: 0.35;
+  }
+}
+
+@keyframes memoryCoreHalo {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.04);
+  }
+}
+
+.animate-memory-float {
+  animation: memoryFloat 8s ease-in-out infinite;
+}
+
+.animate-memory-float-delayed {
+  animation: memoryFloat 10s ease-in-out infinite;
+}
+
+.animate-memory-float-slow {
+  animation: memoryFloatSlow 13s ease-in-out infinite;
+}
+
+.animate-memory-core-halo {
+  animation: memoryCoreHalo 5.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .memory-orbit-spin,
+  .memory-pulse-wave,
+  .memory-arrow-system,
+  .memory-orbit-particles,
+  .memory-orbit-particles-slow,
+  .memory-orbit-particles-reverse,
+  .animate-memory-float,
+  .animate-memory-float-delayed,
+  .animate-memory-float-slow,
+  .animate-memory-core-halo {
+    animation: none !important;
+  }
+}

@@ -1,10 +1,8 @@
+import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Lifecycle from './components/Lifecycle'
-import Evolution from './components/Evolution'
-import MemoryStack from './components/MemoryStack'
-import Demo from './components/Demo'
 import Footer from './components/Footer'
+import Landing from './pages/Landing'
+import Architecture from './pages/Architecture'
 
 function App() {
   return (
@@ -13,13 +11,10 @@ function App() {
       
       <Navbar />
       
-      <main className="relative pt-24">
-        <Hero />
-        <Lifecycle />
-        <Evolution />
-        <MemoryStack />
-        <Demo />
-      </main>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/architecture" element={<Architecture />} />
+      </Routes>
 
       <Footer />
     </div>

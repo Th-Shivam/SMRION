@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Styles */
+.glass-panel {
+  background: rgba(53, 53, 52, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(73, 68, 84, 0.15);
+}
+.micro-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  pointer-events: none;
+}
+.glow-line {
+  background: linear-gradient(90deg, transparent, #d0bcff, transparent);
+}
+.neural-node {
+  box-shadow: 0 0 15px rgba(208, 188, 255, 0.4);
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-delayed { animation: float 6s ease-in-out infinite 3s; }
+@keyframes flow {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.animate-flow {
+  background: linear-gradient(90deg, transparent, rgba(208, 188, 255, 0.3), transparent);
+  background-size: 200% 100%;
+  animation: flow 3s infinite linear;
+}
+.node-broken { opacity: 0.3; filter: blur(1px); }
+.node-active { filter: drop-shadow(0 0 8px #d0bcff); }

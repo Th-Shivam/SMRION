@@ -1,17 +1,20 @@
 export default function Evolution() {
   return (
     <section className="relative py-40 overflow-hidden bg-surface-container-lowest grid-pattern vignette">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-gradient-to-b from-outline-variant/0 via-primary/80 to-outline-variant/0 z-20 hidden md:block glow-line">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-surface-container-lowest border border-primary/50 px-6 py-2.5 rounded-full shadow-[0_0_40px_rgba(208,188,255,0.4)] z-30">
-          <span className="font-label text-xs tracking-widest uppercase text-primary font-bold whitespace-nowrap drop-shadow-[0_0_10px_rgba(208,188,255,0.8)]">SMRION Memory Layer</span>
-        </div>
-      </div>
       <div className="max-w-7xl mx-auto px-8 relative z-10">
         <div className="text-center mb-32">
           <h2 className="font-headline text-5xl md:text-7xl font-black tracking-tighter mb-6">The Evolution of Logic</h2>
           <p className="font-body text-on-surface-variant max-w-2xl mx-auto text-xl font-light">From stateless responses to evolving intelligence — powered by memory.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 relative">
+          
+          {/* Vertical Divider Line - Positioned below the heading */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-gradient-to-b from-outline-variant/0 via-primary/80 to-outline-variant/0 z-20 hidden md:block glow-line">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-surface-container-lowest border border-primary/50 px-6 py-2.5 rounded-full shadow-[0_0_40px_rgba(208,188,255,0.4)] z-30">
+              <span className="font-label text-xs tracking-widest uppercase text-primary font-bold whitespace-nowrap drop-shadow-[0_0_10px_rgba(208,188,255,0.8)]">SMRION Memory Layer</span>
+            </div>
+          </div>
+
           {/* LEFT SIDE: Stateless AI */}
           <div className="space-y-12 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
             <div className="text-right md:pr-12">

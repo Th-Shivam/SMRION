@@ -42,10 +42,10 @@ export default function DocContent() {
           <h2 className="font-headline text-2xl font-bold text-on-surface mb-4">
             The Statefulness Problem
           </h2>
-          <p className="font-body text-on-surface-variant leading-relaxed mb-4">
+          <p className="font-plex text-white/58 leading-[1.72] tracking-[0.015em] mb-4 font-light">
             Traditional large language models operate in a vacuum. Once a session ends, the context is destroyed. SMRION solves this by acting as a high-velocity, persistent memory proxy that injects relevant state dynamically before the prompt reaches the model.
           </p>
-          <p className="font-body text-on-surface-variant leading-relaxed">
+          <p className="font-plex text-white/58 leading-[1.72] tracking-[0.015em] font-light">
             By leveraging our proprietary Vector Sync architecture, SMRION delivers stateful intelligence with sub-25ms latency globally.
           </p>
         </section>
@@ -54,7 +54,7 @@ export default function DocContent() {
           <h2 className="font-headline text-2xl font-bold text-on-surface mb-6">
             Quickstart Integration
           </h2>
-          <p className="font-body text-on-surface-variant leading-relaxed mb-6">
+          <p className="font-plex text-white/58 leading-[1.72] tracking-[0.015em] mb-6 font-light">
             Integrating SMRION takes less than 5 minutes. Select your preferred SDK below.
           </p>
           
@@ -66,7 +66,7 @@ export default function DocContent() {
           <h2 className="font-headline text-2xl font-bold text-on-surface mb-4">
             Best Practices
           </h2>
-          <p className="font-body text-on-surface-variant leading-relaxed mb-6">
+          <p className="font-plex text-white/58 leading-[1.72] tracking-[0.015em] mb-6 font-light">
             To ensure optimal retrieval precision, adhere to the following memory structuring guidelines:
           </p>
           
@@ -78,7 +78,7 @@ export default function DocContent() {
             ].map((item, idx) => (
               <li key={idx} className="flex items-start gap-3 glass-panel p-4 rounded-xl border border-outline-variant/10">
                 <span className="material-symbols-outlined text-primary mt-0.5">check_circle</span>
-                <span className="font-body text-on-surface-variant">{item}</span>
+                <span className="font-plex text-white/58 tracking-[0.012em] font-light">{item}</span>
               </li>
             ))}
           </ul>

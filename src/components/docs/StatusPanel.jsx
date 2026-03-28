@@ -10,23 +10,23 @@ export default function StatusPanel() {
       
       <div className="space-y-4">
         <div className="flex justify-between items-center bg-surface-container-lowest p-3 rounded-lg border border-outline-variant/10">
-          <span className="font-body text-sm text-on-surface-variant">Cluster Health</span>
+          <span className="font-plex text-sm text-white/58 tracking-[0.012em] font-light">Cluster Health</span>
           <span className="font-label text-sm text-primary">Optimal</span>
         </div>
         
         <div className="flex justify-between items-center bg-surface-container-lowest p-3 rounded-lg border border-outline-variant/10">
-          <span className="font-body text-sm text-on-surface-variant">Global Latency</span>
+          <span className="font-plex text-sm text-white/58 tracking-[0.012em] font-light">Global Latency</span>
           <span className="font-label text-sm text-secondary">24ms</span>
         </div>
         
         <div className="flex justify-between items-center bg-surface-container-lowest p-3 rounded-lg border border-outline-variant/10">
-          <span className="font-body text-sm text-on-surface-variant">Active Nodes</span>
+          <span className="font-plex text-sm text-white/58 tracking-[0.012em] font-light">Active Nodes</span>
           <span className="font-label text-sm text-on-surface">1,492</span>
         </div>
       </div>
       
       <div className="mt-5 pt-5 border-t border-outline-variant/20">
-        <div className="text-xs text-on-surface-variant/60 font-body text-center">
+        <div className="text-xs text-white/45 font-plex text-center tracking-[0.012em] font-light">
           Last synced: Just now
         </div>
       </div>

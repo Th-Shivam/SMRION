@@ -18,7 +18,7 @@ export default function InfoCard({ title, children, type = 'info' }) {
         </h4>
       )}
       
-      <div className="font-body text-sm text-on-surface-variant leading-relaxed">
+      <div className="font-plex text-sm text-white/58 leading-[1.72] tracking-[0.012em] font-light">
         {children}
       </div>
     </div>

@@ -27,7 +27,7 @@ export default function Documentation() {
             </span>
           </h1>
 
-          <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-on-surface-variant sm:text-xl">
+          <p className="font-plex mx-auto mt-8 max-w-2xl text-lg leading-[1.72] tracking-[0.015em] text-white/58 font-light sm:text-xl">
             Our backend is still under construction, so detailed documentation and API guides
             are on hold for now. Once the core services are stable, full setup and integration
             docs will be available here.

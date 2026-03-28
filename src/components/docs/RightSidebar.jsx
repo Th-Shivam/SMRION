@@ -26,7 +26,7 @@ export default function RightSidebar() {
             <li key={heading.id}>
               <a 
                 href={`#${heading.id}`}
-                className="font-body text-sm text-on-surface-variant hover:text-primary transition-colors block"
+                className="font-plex text-sm text-white/58 hover:text-primary transition-colors block tracking-[0.012em] font-light"
               >
                 {heading.label}
               </a>
@@ -40,7 +40,7 @@ export default function RightSidebar() {
           <span className="material-symbols-outlined text-sm text-secondary">forum</span>
           Need Help?
         </h4>
-        <p className="font-body text-xs text-on-surface-variant mb-4 leading-relaxed">
+        <p className="font-plex text-xs text-white/52 mb-4 leading-[1.7] tracking-[0.012em] font-light">
           Join our developer community on Discord to discuss architecture and get support.
         </p>
         <button className="w-full text-xs font-label uppercase tracking-widest bg-surface-container-high py-2 rounded-lg text-on-surface hover:bg-primary-container hover:text-on-primary-container transition-all">

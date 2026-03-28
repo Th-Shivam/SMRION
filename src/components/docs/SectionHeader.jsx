@@ -12,7 +12,7 @@ export default function SectionHeader({ title, description, badge }) {
         {title}
       </h1>
       {description && (
-        <p className="font-body text-on-surface-variant text-lg max-w-3xl leading-relaxed">
+        <p className="font-plex text-white/58 text-lg max-w-3xl leading-[1.72] tracking-[0.015em] font-light">
           {description}
         </p>
       )}

@@ -228,6 +228,48 @@
   animation: memoryCoreHalo 5.5s ease-in-out infinite;
 }
 
+.docs-placeholder-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 180px 180px;
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.8), transparent 78%);
+}
+
+.docs-placeholder-panel {
+  background:
+    radial-gradient(circle at top, rgba(160, 120, 255, 0.12) 0%, rgba(160, 120, 255, 0.02) 28%, transparent 62%),
+    linear-gradient(180deg, rgba(17, 17, 20, 0.92) 0%, rgba(8, 8, 10, 0.96) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 35px 100px rgba(0, 0, 0, 0.55);
+}
+
+.docs-placeholder-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(100px);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.docs-placeholder-orb-left {
+  left: 8%;
+  top: 12rem;
+  height: 18rem;
+  width: 18rem;
+  background: rgba(123, 97, 255, 0.18);
+}
+
+.docs-placeholder-orb-right {
+  right: 10%;
+  top: 18rem;
+  height: 22rem;
+  width: 22rem;
+  background: rgba(255, 255, 255, 0.05);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .memory-orbit-spin,
   .memory-pulse-wave,
@@ -242,3 +284,86 @@
     animation: none !important;
   }
 }
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Developer Console Animations */
+@keyframes pulse-status {
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  50% { opacity: 0.7; transform: scale(1.1); box-shadow: 0 0 10px 2px rgba(16, 185, 129, 0.4); }
+}
+.status-pulse { animation: pulse-status 2s infinite ease-in-out; }
+
+@keyframes network-drift {
+  0% { transform: translateY(0) translateX(0); opacity: 0.1; }
+  50% { opacity: 0.3; }
+  100% { transform: translateY(-100px) translateX(50px); opacity: 0.1; }
+}
+.network-node {
+  position: fixed;
+  width: 2px;
+  height: 2px;
+  background: #d0bcff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: network-drift linear infinite;
+}
+
+.code-line-highlight {
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+.code-line-highlight:hover {
+  background: rgba(208, 188, 255, 0.08) !important;
+  box-shadow: inset 3px 0 0 0 #d0bcff !important;
+}
+
+.nav-link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #d0bcff;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 8px #d0bcff;
+}
+.nav-link-hover:hover::after { width: 100%; }
+
+@keyframes bar-grow {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.8); }
+}
+.latency-bar { transform-origin: bottom; }
+.latency-bar:nth-child(1) { animation: bar-grow 2s infinite ease-in-out 0.1s; }
+.latency-bar:nth-child(2) { animation: bar-grow 2.3s infinite ease-in-out 0.3s; }
+.latency-bar:nth-child(3) { animation: bar-grow 1.8s infinite ease-in-out 0.5s; }
+.latency-bar:nth-child(4) { animation: bar-grow 2.5s infinite ease-in-out 0.2s; }
+.latency-bar:nth-child(5) { animation: bar-grow 2.1s infinite ease-in-out 0.4s; }
+.latency-bar:nth-child(6) { animation: bar-grow 1.9s infinite ease-in-out 0.6s; }
+
+@keyframes active-dot-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+.active-indicator-pulse { animation: active-dot-pulse 2s infinite ease-in-out; }
+
+.bg-grid { 
+  background-image: radial-gradient(circle at 1px 1px, rgba(208, 188, 255, 0.03) 1px, transparent 0); 
+  background-size: 40px 40px; 
+}
+.glow-accent { box-shadow: 0 0 40px -10px rgba(208, 188, 255, 0.15); }

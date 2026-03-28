@@ -59,6 +59,8 @@ export default {
       fontFamily: {
         "headline": ["Manrope", "sans-serif"],
         "body": ["Inter", "sans-serif"],
+        "modern": ["Sora", "sans-serif"],
+        "plex": ["IBM Plex Sans", "sans-serif"],
         "label": ["Space Grotesk", "sans-serif"]
       },
       borderRadius: {

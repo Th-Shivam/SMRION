@@ -85,7 +85,7 @@ export default function Hero() {
         <h1 className="font-headline text-5xl md:text-7xl lg:text-[5.5rem] font-black tracking-tighter leading-[1.05] text-on-surface mb-8 drop-shadow-2xl">
           AI That <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d0bcff] via-[#b69df8] to-[#9a7ff0] drop-shadow-[0_0_20px_rgba(208,188,255,0.15)] italic py-2 pr-2">Remembers.</span><br/>Like It Should Have.
         </h1>
-        <p className="font-body text-on-surface-variant text-lg md:text-xl max-w-2xl mx-auto mb-16 leading-relaxed opacity-80 font-light">
+        <p className="font-plex text-lg md:text-xl max-w-2xl mx-auto mb-16 leading-[1.72] tracking-[0.015em] text-white/58 font-light">
           SMRION is a persistent memory layer that transforms stateless AI into evolving intelligence. Build models that learn with every interaction.
         </p>
         

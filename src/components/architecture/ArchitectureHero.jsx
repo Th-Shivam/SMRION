@@ -9,16 +9,16 @@ export default function ArchitectureHero() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-10 text-center max-w-5xl mx-auto"
+        className="relative z-10 text-center max-w-7xl mx-auto w-full"
       >
         <span className="font-label text-primary uppercase tracking-[0.4em] mb-6 block animate-flicker text-xs md:text-sm">
-          INFRASTRUCTURE V4.0.2 LIVE
+          INFRASTRUCTURE V1.0.0 LIVE
         </span>
         <h1 className="font-headline text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter mb-8 bg-gradient-to-b from-on-surface via-on-surface to-on-surface-variant bg-clip-text text-transparent leading-none drop-shadow-2xl">
           The Architecture <br />of Memory
         </h1>
-        <p className="font-body text-xl md:text-2xl text-on-surface-variant max-w-3xl mx-auto leading-relaxed opacity-80">
-          Converting stateless LLMs into sentient, high-performance reasoning engines via a unified, persistent memory fabric.
+        <p className="font-modern text-lg md:text-[1.3rem] text-white/60 max-w-[82rem] mx-auto leading-[1.72] tracking-[0.014em] font-light px-4">
+          A unified memory fabric designed to give stateless LLMs durable context, faster recall, and a more continuous reasoning flow, so every interaction feels informed, adaptive, and unmistakably intelligent.
         </p>
       </motion.div>
     </section>

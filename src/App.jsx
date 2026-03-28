@@ -4,6 +4,7 @@ import Footer from './components/Footer'
 import Landing from './pages/Landing'
 import Architecture from './pages/Architecture'
 import Documentation from './pages/Documentation'
+import Onboarding from './pages/Onboarding'
 
 function App() {
   const location = useLocation()
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/architecture" element={<Architecture />} />
         <Route path="/docs/*" element={<Documentation />} />
+        <Route path="/onboarding" element={<Onboarding />} />
       </Routes>
 
       {!isDocsRoute && <Footer />}

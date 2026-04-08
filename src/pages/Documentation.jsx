@@ -1,9 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
+import SidebarNav from '../components/docs/SidebarNav';
+import Sitemap from '../components/docs/Sitemap';
 
-export default function Documentation() {
+function DocsPlaceholder() {
   return (
-    <section className="relative min-h-screen overflow-hidden px-0 pt-24">
+    <section className="relative min-h-screen overflow-hidden px-0">
       <div className="docs-placeholder-orb docs-placeholder-orb-left" />
       <div className="docs-placeholder-orb docs-placeholder-orb-right" />
       <div className="docs-placeholder-grid absolute inset-0 opacity-30" />
@@ -58,5 +60,31 @@ export default function Documentation() {
         </div>
       </div>
     </section>
+  );
+}
+
+export default function Documentation() {
+  return (
+    <div className="pt-24 min-h-screen">
+      <div className="max-w-screen-2xl mx-auto px-6 lg:px-8">
+        <div className="flex gap-8">
+          <SidebarNav />
+          <main className="flex-1 min-w-0">
+            <Routes>
+              <Route path="/" element={<DocsPlaceholder />} />
+              <Route path="/sitemap" element={<Sitemap />} />
+              <Route path="/quickstart" element={<DocsPlaceholder />} />
+              <Route path="/concepts" element={<DocsPlaceholder />} />
+              <Route path="/memory" element={<DocsPlaceholder />} />
+              <Route path="/vector-sync" element={<DocsPlaceholder />} />
+              <Route path="/nodes" element={<DocsPlaceholder />} />
+              <Route path="/auth" element={<DocsPlaceholder />} />
+              <Route path="/api-endpoints" element={<DocsPlaceholder />} />
+              <Route path="/webhooks" element={<DocsPlaceholder />} />
+            </Routes>
+          </main>
+        </div>
+      </div>
+    </div>
   );
 }

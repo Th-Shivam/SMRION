@@ -25,6 +25,12 @@ const navItems = [
       { name: 'Endpoints', href: '/docs/api-endpoints' },
       { name: 'Webhooks', href: '/docs/webhooks' }
     ]
+  },
+  {
+    title: 'Resources',
+    links: [
+      { name: 'Sitemap', href: '/docs/sitemap', icon: 'map' }
+    ]
   }
 ];
 
@@ -46,13 +52,18 @@ export default function SidebarNav() {
                   <li key={lIdx}>
                     <Link
                       to={link.href}
-                      className={`block font-plex text-sm px-3 py-2 rounded-lg transition-all duration-200 tracking-[0.012em] ${
+                      className={`flex items-center gap-2 font-plex text-sm px-3 py-2 rounded-lg transition-all duration-200 tracking-[0.012em] ${
                         isActive 
                           ? 'bg-primary/10 text-primary font-semibold border border-primary/20 shadow-[0_0_15px_rgba(208,188,255,0.05)]' 
                           : 'text-white/58 hover:text-on-surface hover:bg-surface-container-high font-light'
                       }`}
                     >
-                      {link.name}
+                      {link.icon && (
+                        <span className="material-symbols-outlined text-base">
+                          {link.icon}
+                        </span>
+                      )}
+                      <span>{link.name}</span>
                     </Link>
                   </li>
                 );

@@ -5,7 +5,7 @@ All values are loaded from the .env file or environment variables.
 
 from pydantic_settings import BaseSettings
 from functools import lru_cache
-from typing import Optional
+from typing import List, Optional
 
 
 class Settings(BaseSettings):
@@ -58,6 +58,32 @@ class Settings(BaseSettings):
 
     # ── CORS ──────────────────────────────────────────────────────────────────
     ALLOWED_ORIGINS: list[str] = ["http://localhost:5173", "http://localhost:3000"]
+
+    # ── Qdrant ───────────────────────────────────────────────────────────────────
+    QDRANT_HOST: str = "localhost"
+    QDRANT_PORT: int = 6333
+    QDRANT_COLLECTION: str = "smrion_memories"
+
+    @property
+    def QDRANT_URL(self) -> str:
+        return f"http://{self.QDRANT_HOST}:{self.QDRANT_PORT}"
+
+    # ── Celery ───────────────────────────────────────────────────────────────────
+    @property
+    def CELERY_BROKER_URL(self) -> str:
+        return self.REDIS_URL
+
+    @property
+    def CELERY_RESULT_BACKEND(self) -> str:
+        return self.REDIS_URL
+
+    # ── Embeddings ───────────────────────────────────────────────────────────────
+    EMBEDDING_MODEL: str = "sentence-transformers/all-MiniLM-L6-v2"
+    EMBEDDING_DIM: int = 384  # MiniLM output dimension
+
+    # ── Text Chunking ─────────────────────────────────────────────────────────────
+    CHUNK_SIZE: int = 512     # max words per chunk
+    CHUNK_OVERLAP: int = 64   # word overlap between consecutive chunks
 
     class Config:
         env_file = ".env"

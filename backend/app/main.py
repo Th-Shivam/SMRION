@@ -12,6 +12,7 @@ from app.core.config import settings
 from app.core.logging import logger, setup_logging
 from app.db.redis import close_redis, init_redis
 from app.db.session import close_db, init_db
+from app.db.qdrant import ensure_collection
 from app.routes import api_router
 
 
@@ -25,6 +26,7 @@ async def lifespan(app: FastAPI):
 
     await init_db()
     await init_redis()
+    ensure_collection()  # bootstrap Qdrant collection (no-op if already exists)
 
     yield  # ← application is live here
 

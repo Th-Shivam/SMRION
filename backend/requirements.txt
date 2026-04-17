@@ -19,6 +19,16 @@ passlib[bcrypt]==1.7.4
 # ── HTTP client (for external AI service calls) ───────────────────────────────
 httpx==0.28.0
 
+# ── Async task queue ──────────────────────────────────────────────────────────
+celery[redis]==5.4.0       # task queue (Redis as broker + backend)
+
+# ── Vector store ──────────────────────────────────────────────────────────────
+qdrant-client==1.11.3      # Qdrant HTTP/gRPC client
+
+# ── Embeddings ────────────────────────────────────────────────────────────────
+sentence-transformers==3.3.1   # local MiniLM embedding model
+torch==2.4.1                   # required by sentence-transformers (CPU build)
+
 # ── Dev / Testing ─────────────────────────────────────────────────────────────
 pytest==8.3.3
 pytest-asyncio==0.24.0

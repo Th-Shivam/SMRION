@@ -2,7 +2,8 @@
 Memory ORM model – core entity for SMRION's AI memory system.
 """
 
-from sqlalchemy import Float, String, Text
+from datetime import datetime
+from sqlalchemy import Float, String, Text, Integer, DateTime
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.session import Base
@@ -45,6 +46,18 @@ class Memory(Base, UUIDMixin, TimestampMixin, SoftDeleteMixin):
 
     # Caller-supplied JSON metadata blob
     ingestion_metadata: Mapped[str | None] = mapped_column(Text, nullable=True)
+
+    # ── Scoring Engine ────────────────────────────────────────────────────────
+    
+    access_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    
+    last_accessed_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True),
+        nullable=True,
+        default=None,
+    )
+    
+    final_score: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)
 
     def __repr__(self) -> str:
         return f"<Memory id={self.id} user={self.user_id!r} status={self.processing_status!r}>"

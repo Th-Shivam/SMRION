@@ -85,6 +85,12 @@ class Settings(BaseSettings):
     CHUNK_SIZE: int = 512     # max words per chunk
     CHUNK_OVERLAP: int = 64   # word overlap between consecutive chunks
 
+    # ── Scoring Engine ──────────────────────────────────────────────────────────
+    SCORE_WEIGHT_RECENCY: float = 0.3
+    SCORE_WEIGHT_FREQUENCY: float = 0.3
+    SCORE_WEIGHT_IMPORTANCE: float = 0.4
+    SCORE_RECENCY_DECAY_DAYS: float = 30.0
+
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"

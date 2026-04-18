@@ -52,8 +52,7 @@ export default function MemoryLoop() {
                 cy="350"
                 r="220"
                 fill="none"
-                stroke="currentColor"
-                className="text-outline-variant/10"
+                stroke="rgba(255,255,255,0.06)"
                 strokeWidth="1"
               />
 
@@ -90,8 +89,7 @@ export default function MemoryLoop() {
                     y1={y1}
                     x2={x2}
                     y2={y2}
-                    stroke="currentColor"
-                    className="text-outline-variant/20"
+                    stroke="rgba(255,255,255,0.12)"
                     strokeWidth="1.5"
                   />
                 )
@@ -135,9 +133,9 @@ export default function MemoryLoop() {
             <motion.div
               animate={{ scale: [1, 1.02, 1] }}
               transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-              className="relative z-20 w-[260px] h-[260px] rounded-full flex flex-col items-center justify-center border border-outline-variant/10 dark:border-white/5 bg-surface-container-low dark:bg-transparent"
+              className="relative z-20 w-[260px] h-[260px] rounded-full flex flex-col items-center justify-center border border-outline-variant/10 dark:border-white/5"
               style={{
-                background: 'linear-gradient(135deg, #111116 0%, #050508 100%)',
+                background: 'var(--memory-loop-core-bg, linear-gradient(135deg, #111116 0%, #050508 100%))',
                 boxShadow: '0 0 50px rgba(130,112,255,0.06), inset 0 0 20px rgba(255,255,255,0.02)',
               }}
             >

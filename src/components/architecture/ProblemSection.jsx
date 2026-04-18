@@ -26,14 +26,14 @@ export default function ProblemSection() {
               <span className="material-symbols-outlined text-error p-3 bg-error/10 rounded-xl group-hover:scale-110 transition-transform">link_off</span>
               <div>
                 <h4 className="font-bold text-on-surface text-lg font-headline">Context Volatility</h4>
-                <p className="text-sm text-on-surface-variant mt-1 opacity-70 leading-relaxed">Interaction states are wiped every 2048 tokens, forcing expensive re-processing.</p>
+                <p className="text-sm text-on-surface-variant mt-1 opacity-100 dark:opacity-70 leading-relaxed">Interaction states are wiped every 2048 tokens, forcing expensive re-processing.</p>
               </div>
             </div>
             <div className="group flex items-start gap-4 p-6 rounded-2xl bg-surface-container-low border border-error/10 hover:border-error/30 transition-all module-card shadow-lg hover:shadow-[0_0_30px_rgba(255,180,171,0.05)]">
               <span className="material-symbols-outlined text-error p-3 bg-error/10 rounded-xl group-hover:scale-110 transition-transform">history</span>
               <div>
                 <h4 className="font-bold text-on-surface text-lg font-headline">Zero Continuity</h4>
-                <p className="text-sm text-on-surface-variant mt-1 opacity-70 leading-relaxed">Cross-session intelligence is impossible without manual, high-latency storage.</p>
+                <p className="text-sm text-on-surface-variant mt-1 opacity-100 dark:opacity-70 leading-relaxed">Cross-session intelligence is impossible without manual, high-latency storage.</p>
               </div>
             </div>
           </div>

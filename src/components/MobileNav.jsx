@@ -59,7 +59,7 @@ export default function MobileNav({ isOpen, onClose }) {
       <main className="flex-1 w-full flex flex-col justify-start px-8 md:px-24 overflow-y-auto">
         <div className="flex flex-col space-y-8 md:space-y-10 my-auto py-8">
           {/* Nav Item 1 */}
-        <Link to="/" onClick={onClose} className="group flex flex-col animate-slide-in-stagger-1 hover:pl-4 transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]">
+        <Link to="/" state={{ skipIntro: true }} onClick={onClose} className="group flex flex-col animate-slide-in-stagger-1 hover:pl-4 transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]">
           <div className="flex items-center gap-4">
             <span className="material-symbols-outlined text-primary text-xl">inventory_2</span>
             <span className="font-headline text-4xl md:text-6xl font-extrabold tracking-tight text-[#e5e2e1]/60 group-hover:text-primary transition-colors">Product</span>
@@ -95,7 +95,7 @@ export default function MobileNav({ isOpen, onClose }) {
         </Link>
         
         {/* Nav Item 5 */}
-        <a href="#" onClick={onClose} className="group flex flex-col animate-slide-in-stagger-5 hover:pl-4 transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]">
+        <a href="#" onClick={(e) => { e.preventDefault(); onClose(); }} className="group flex flex-col animate-slide-in-stagger-5 hover:pl-4 transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]">
           <div className="flex items-center gap-4">
             <span className="material-symbols-outlined text-primary text-xl">code</span>
             <span className="font-headline text-4xl md:text-6xl font-extrabold tracking-tight text-[#e5e2e1]/60 group-hover:text-primary transition-colors">GitHub</span>

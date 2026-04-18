@@ -1,9 +1,33 @@
-import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import MobileNav from './MobileNav';
 
 export default function Navbar() {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+  const [isVisible, setIsVisible] = useState(!isHomePage);
+
+  useEffect(() => {
+    if (!isHomePage) {
+      setIsVisible(true);
+      return;
+    }
+
+    const handleScroll = () => {
+      // Appear exactly when the intro screen finishes (when main page touches the top bar)
+      // We subtract ~70px so it triggers right as the top of main comes into the nav zone
+      if (window.scrollY > window.innerHeight - 70) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isHomePage]);
 
   const navLinkClass = ({ isActive }) =>
     `font-label tracking-[0.2em] text-[10px] uppercase font-bold transition-all duration-300 ${
@@ -14,17 +38,19 @@ export default function Navbar() {
 
   return (
     <>
-    <nav className="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-3xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] border-b border-outline-variant/30">
+    <nav className={`fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-3xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] border-b border-outline-variant/30 transition-transform duration-700 ease-in-out ${
+      isVisible ? 'translate-y-0' : '-translate-y-full'
+    }`}>
       <div className="flex justify-between items-center px-6 md:px-8 py-5 max-w-screen-2xl mx-auto">
-        <Link to="/" className="text-2xl font-black tracking-widest text-on-surface font-headline drop-shadow-md cursor-pointer">SMRION</Link>
+        <Link to="/" state={{ skipIntro: true }} className="text-2xl font-black tracking-widest text-on-surface font-headline drop-shadow-md cursor-pointer">SMRION</Link>
         
         {/* Desktop Links */}
         <div className="hidden md:flex gap-10 items-center">
-          <NavLink to="/" end className={navLinkClass}>Product</NavLink>
+          <NavLink to="/" state={{ skipIntro: true }} end className={navLinkClass}>Product</NavLink>
           <NavLink to="/architecture" className={navLinkClass}>Architecture</NavLink>
           <NavLink to="/docs" className={navLinkClass}>Docs</NavLink>
           <NavLink to="/onboarding" className={navLinkClass}>Beta Access</NavLink>
-          <a className="font-label tracking-[0.2em] text-[10px] uppercase font-bold text-on-surface-variant hover:text-primary transition-all duration-300" href="#">GitHub</a>
+          <a className="font-label tracking-[0.2em] text-[10px] uppercase font-bold text-on-surface-variant hover:text-primary transition-all duration-300" href="#" onClick={(e) => e.preventDefault()}>GitHub</a>
         </div>
 
         {/* Desktop CTA Button */}

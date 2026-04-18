@@ -36,7 +36,7 @@ export default function Demo() {
                 <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-on-primary text-xs font-black shadow-[0_0_20px_rgba(208,188,255,0.6)]">SYS</div>
                 <div className="flex-1 border-l-2 border-primary/30 pl-6 pb-2">
                   <p className="text-on-surface font-body text-lg leading-relaxed">"Based on the node architecture we discussed last session, you should focus on indexing the <span className="text-primary font-bold bg-primary/10 px-2 py-0.5 rounded">`deployment_id`</span>. I recall you're using a sharded table structure, so here is the optimized SQL:"</p>
-                  <div className="mt-6 p-6 bg-surface-container-highest rounded-xl font-mono text-sm border border-outline-variant/20 text-secondary-fixed shadow-inner relative overflow-hidden group">
+                  <div className="mt-6 p-6 bg-surface-container-highest rounded-xl font-mono text-sm border border-outline-variant/20 text-secondary dark:text-secondary-fixed shadow-inner relative overflow-hidden group">
                     <div className="absolute top-0 left-0 w-1 h-full bg-primary"></div>
                     CREATE INDEX idx_node_deploy ON deployments(id) WHERE active = true;
                   </div>

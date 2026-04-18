@@ -36,10 +36,10 @@ export default function HybridRetrieval() {
               </span>
               Page Indexing
             </h4>
-            <p className="text-on-surface-variant text-base lg:text-lg mb-8 opacity-80 leading-relaxed max-w-sm">
+            <p className="text-on-surface-variant text-base lg:text-lg mb-8 dark:opacity-80 leading-relaxed max-w-sm">
               Nano-second structured lookup for exact documentation coordinates and technical data specs.
             </p>
-            <div className="grid grid-cols-1 gap-5 font-label text-xs tracking-widest text-on-surface/80 uppercase font-bold">
+            <div className="grid grid-cols-1 gap-5 font-label text-xs tracking-widest text-on-surface dark:text-on-surface/80 uppercase font-bold">
               <div className="flex items-center gap-3">
                 <div className="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse-glow shadow-[0_0_8px_currentColor]"></div>
                 <span>1.2ms Latency Baseline</span>
@@ -81,10 +81,10 @@ export default function HybridRetrieval() {
               </span>
               Semantic Retrieval
             </h4>
-            <p className="text-on-surface-variant text-base lg:text-lg mb-8 opacity-80 leading-relaxed max-w-sm">
+            <p className="text-on-surface-variant text-base lg:text-lg mb-8 dark:opacity-80 leading-relaxed max-w-sm">
               High-dimensional vector space exploration to decode subtext, intent, and implicit links.
             </p>
-            <div className="grid grid-cols-1 gap-5 font-label text-xs tracking-widest text-on-surface/80 uppercase font-bold">
+            <div className="grid grid-cols-1 gap-5 font-label text-xs tracking-widest text-on-surface dark:text-on-surface/80 uppercase font-bold">
               <div className="flex items-center gap-3">
                 <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse-glow shadow-[0_0_8px_currentColor]"></div>
                 <span>Multi-domain context aware</span>

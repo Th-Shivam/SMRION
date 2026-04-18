@@ -41,13 +41,13 @@ export default function IntroScreen() {
       {/* Container for the exact Unicorn Studio Embed */}
       <div
         ref={containerRef}
-        className={`absolute inset-0 flex items-center justify-center scale-[0.85] md:scale-110 origin-center pointer-events-auto transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'
+        className={`absolute inset-0 flex items-center justify-center scale-75 md:scale-100 origin-center pointer-events-auto transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'
           }`}
       ></div>
 
       {/* Floating Scroll Bridge Indicator (Visible on initial Landing view) */}
       <div className={`absolute bottom-8 right-6 md:bottom-12 md:right-12 flex items-center justify-center animate-[bounce_3s_infinite] z-40 transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-        <div
+        <div 
           onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
           className="flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/15 backdrop-blur-xl border border-white/30 shadow-[0_8px_32px_rgba(0,0,0,0.05)] hover:bg-white/25 transition-all duration-300 cursor-pointer group"
         >

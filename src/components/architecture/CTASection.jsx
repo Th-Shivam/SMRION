@@ -20,7 +20,7 @@ export default function CTASection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="text-on-surface-variant text-xl md:text-2xl mb-16 leading-relaxed dark:opacity-80 max-w-3xl mx-auto"
+        className="text-on-surface-variant text-xl md:text-2xl mb-16 leading-relaxed opacity-80 max-w-3xl mx-auto"
       >
         Join the infrastructure revolution. Bridge the gap between intelligence and statelessness with SMRION.
       </motion.p>

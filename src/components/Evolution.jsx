@@ -16,7 +16,7 @@ export default function Evolution() {
           </div>
 
           {/* LEFT SIDE: Stateless AI */}
-          <div className="space-y-12 dark:grayscale dark:hover:grayscale-0 transition-all duration-700 relative">
+          <div className="space-y-12 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
             <div className="text-right md:pr-12">
               <span className="font-label text-sm tracking-[0.2em] font-bold uppercase text-on-surface-variant mb-2 block">Before SMRION</span>
               <h3 className="font-headline text-4xl font-light text-on-surface-variant tracking-tight">Stateless AI</h3>
@@ -24,50 +24,44 @@ export default function Evolution() {
             <div className="relative h-[450px] flex items-center justify-center">
               {/* Visual: Fragmented/Fading Nodes */}
               <div className="absolute inset-0 flex flex-wrap gap-6 items-center justify-center p-8">
-                <div className="w-14 h-14 rounded-xl bg-outline-variant border border-outline-variant/10 flex items-center justify-center node-broken animate-pulse-glow">
-                  <span className="material-symbols-outlined text-surface-container-lowest text-2xl">blur_on</span>
+                <div className="w-14 h-14 rounded-xl bg-outline-variant/5 border border-outline-variant/10 flex items-center justify-center node-broken animate-pulse-glow">
+                  <span className="material-symbols-outlined text-outline-variant/30 text-2xl">blur_on</span>
                 </div>
-                <div className="w-14 h-14 rounded-xl bg-outline-variant border border-outline-variant/10 flex items-center justify-center node-broken translate-y-8 animate-float">
-                  <span className="material-symbols-outlined text-surface-container-lowest text-2xl">cloud_off</span>
+                <div className="w-14 h-14 rounded-xl bg-outline-variant/5 border border-outline-variant/10 flex items-center justify-center node-broken translate-y-8 animate-float">
+                  <span className="material-symbols-outlined text-outline-variant/30 text-2xl">cloud_off</span>
                 </div>
-                <div className="w-14 h-14 rounded-xl bg-outline-variant border border-outline-variant/10 flex items-center justify-center node-broken -translate-x-6 animate-pulse">
-                  <span className="material-symbols-outlined text-surface-container-lowest text-2xl">history</span>
+                <div className="w-14 h-14 rounded-xl bg-outline-variant/5 border border-outline-variant/10 flex items-center justify-center node-broken -translate-x-6 animate-pulse">
+                  <span className="material-symbols-outlined text-outline-variant/30 text-2xl">history</span>
                 </div>
-                <div className="w-14 h-14 rounded-xl bg-outline-variant border border-outline-variant/10 flex items-center justify-center node-broken translate-x-16 -translate-y-4 animate-float-delayed">
-                  <span className="material-symbols-outlined text-surface-container-lowest text-2xl">sync_problem</span>
+                <div className="w-14 h-14 rounded-xl bg-outline-variant/5 border border-outline-variant/10 flex items-center justify-center node-broken translate-x-16 -translate-y-4 animate-float-delayed">
+                  <span className="material-symbols-outlined text-outline-variant/30 text-2xl">sync_problem</span>
                 </div>
               </div>
-              
-              {/* Layered Glass Panel with proper background structure */}
-              <div className="relative w-full max-w-md absolute -rotate-2 transform transition-transform hover:rotate-0 hover:scale-105 z-10">
-                {/* Backdrop blur layer to prevent grid from showing through vividly */}
-                <div className="absolute inset-0 bg-surface-container-highest/20 dark:bg-surface-container-lowest/40 blur-[80px] rounded-[2rem]"></div>
-                
-                <div className="module-card bg-surface-container-lowest border border-outline-variant p-10 rounded-[2rem] relative shadow-2xl">
-                  <ul className="space-y-8">
-                    <li className="flex items-start gap-5 text-on-surface-variant">
-                      <span className="material-symbols-outlined mt-1 text-lg">remove_circle_outline</span>
-                      <div>
-                        <p className="font-bold text-sm uppercase font-label">No memory retention</p>
-                        <p className="text-sm mt-1 opacity-80">Each request is a fresh start with zero context.</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-5 text-on-surface-variant">
-                      <span className="material-symbols-outlined mt-1 text-lg">history</span>
-                      <div>
-                        <p className="font-bold text-sm uppercase font-label">Context resets every session</p>
-                        <p className="text-sm mt-1 opacity-80">Limited to short-term context window tokens.</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-5 text-on-surface-variant">
-                      <span className="material-symbols-outlined mt-1 text-lg">fragment_stack</span>
-                      <div>
-                        <p className="font-bold text-sm uppercase font-label">Fragmented intelligence</p>
-                        <p className="text-sm mt-1 opacity-80">Identical users receive generic responses.</p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
+              {/* Layered Glass Panel */}
+              <div className="module-card border-outline-variant/20 p-10 rounded-[2rem] w-full max-w-md absolute -rotate-2 transform transition-transform hover:rotate-0 hover:scale-105 z-10 shadow-2xl">
+                <ul className="space-y-8">
+                  <li className="flex items-start gap-5 text-on-surface-variant/60">
+                    <span className="material-symbols-outlined mt-1 text-lg">remove_circle_outline</span>
+                    <div>
+                      <p className="font-bold text-sm uppercase font-label">No memory retention</p>
+                      <p className="text-sm mt-1">Each request is a fresh start with zero context.</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-5 text-on-surface-variant/60">
+                    <span className="material-symbols-outlined mt-1 text-lg">history</span>
+                    <div>
+                      <p className="font-bold text-sm uppercase font-label">Context resets every session</p>
+                      <p className="text-sm mt-1">Limited to short-term context window tokens.</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-5 text-on-surface-variant/60">
+                    <span className="material-symbols-outlined mt-1 text-lg">fragment_stack</span>
+                    <div>
+                      <p className="font-bold text-sm uppercase font-label">Fragmented intelligence</p>
+                      <p className="text-sm mt-1">Identical users receive generic responses.</p>
+                    </div>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

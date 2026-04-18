@@ -11,7 +11,7 @@ const loopNodes = [
 
 export default function MemoryLoop() {
   return (
-    <section className="px-6 md:px-8 py-32 md:py-48 bg-surface-container-lowest dark:bg-[#050505] border-y border-outline-variant/10 overflow-hidden relative">
+    <section className="px-6 md:px-8 py-32 md:py-48 bg-[#050505] border-y border-outline-variant/10 overflow-hidden relative">
       <div className="max-w-7xl mx-auto text-center relative z-10 flex flex-col items-center">
         
         <motion.h3
@@ -113,16 +113,16 @@ export default function MemoryLoop() {
                     transform: 'translate(-50%, -50%)',
                   }}
                 >
-                  <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-surface-container-low dark:bg-[#07070a] border border-outline-variant/20 dark:border-white/10 transition-all duration-300 shadow-lg cursor-default group-hover:border-primary/40 group-hover:bg-surface-container-high dark:group-hover:bg-[#0a0a0f] group-hover:-translate-y-1">
+                  <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-[#07070a] border border-white/10 transition-all duration-300 shadow-lg cursor-default group-hover:border-primary/40 group-hover:bg-[#0a0a0f] group-hover:-translate-y-1">
                     <span className="material-symbols-outlined text-on-surface-variant text-2xl group-hover:text-primary transition-colors">
                       {node.icon}
                     </span>
                   </div>
 
-                  <span className="font-label text-[10px] mt-4 uppercase tracking-[0.3em] font-bold text-on-surface bg-surface-container-lowest dark:bg-[#050505] px-2 py-0.5">
+                  <span className="font-label text-[10px] mt-4 uppercase tracking-[0.3em] font-bold text-on-surface bg-[#050505] px-2 py-0.5">
                     {node.label}
                   </span>
-                  <span className="font-label text-[8px] mt-1 uppercase tracking-[0.2em] text-on-surface-variant dark:opacity-70 bg-surface-container-lowest dark:bg-[#050505] px-2">
+                  <span className="font-label text-[8px] mt-1 uppercase tracking-[0.2em] text-on-surface-variant opacity-70 bg-[#050505] px-2">
                     {node.detail}
                   </span>
                 </div>
@@ -133,14 +133,14 @@ export default function MemoryLoop() {
             <motion.div
               animate={{ scale: [1, 1.02, 1] }}
               transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-              className="relative z-20 w-[260px] h-[260px] rounded-full flex flex-col items-center justify-center border border-outline-variant/10 dark:border-white/5"
+              className="relative z-20 w-[260px] h-[260px] rounded-full flex flex-col items-center justify-center border border-white/5"
               style={{
-                background: 'var(--memory-loop-core-bg, linear-gradient(135deg, #111116 0%, #050508 100%))',
+                background: 'linear-gradient(135deg, #111116 0%, #050508 100%)',
                 boxShadow: '0 0 50px rgba(130,112,255,0.06), inset 0 0 20px rgba(255,255,255,0.02)',
               }}
             >
               {/* Subtle sharp inner ring */}
-              <div className="absolute inset-[4px] rounded-full border border-primary/20 bg-surface-container-lowest dark:bg-[#07070a] shadow-inner"></div>
+              <div className="absolute inset-[4px] rounded-full border border-primary/20 bg-[#07070a] shadow-inner"></div>
               
               <div className="relative z-10 flex flex-col items-center mt-2">
                 <div className="text-on-surface font-headline font-black text-3xl text-center leading-[1.1] tracking-tighter drop-shadow-sm">

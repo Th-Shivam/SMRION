@@ -57,7 +57,7 @@ export default function ModulesSection() {
             </div>
             <div>
               <h5 className="font-bold text-lg mb-2 text-on-surface font-headline tracking-tight">{mod.title}</h5>
-              <p className="text-sm text-on-surface-variant leading-relaxed dark:opacity-80">{mod.desc}</p>
+              <p className="text-sm text-on-surface-variant leading-relaxed opacity-80">{mod.desc}</p>
             </div>
           </motion.div>
         ))}

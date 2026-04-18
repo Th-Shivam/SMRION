@@ -63,7 +63,7 @@ export default function CorePipeline() {
                 <span className="material-symbols-outlined text-secondary text-2xl">sensor_window</span>
               </div>
               <h5 className="text-[10px] font-label font-bold text-primary mb-2 uppercase tracking-widest">Capture</h5>
-              <p className="text-[10px] text-on-surface-variant leading-tight opacity-70">Intent signal isolation</p>
+              <p className="text-[10px] text-on-surface-variant leading-tight dark:opacity-70">Intent signal isolation</p>
             </motion.div>
 
             {/* Node 2 */}
@@ -72,7 +72,7 @@ export default function CorePipeline() {
                 <span className="material-symbols-outlined text-secondary text-2xl">fact_check</span>
               </div>
               <h5 className="text-[10px] font-label font-bold text-primary mb-2 uppercase tracking-widest">Indexing</h5>
-              <p className="text-[10px] text-on-surface-variant leading-tight opacity-70">Parallel token mapping</p>
+              <p className="text-[10px] text-on-surface-variant leading-tight dark:opacity-70">Parallel token mapping</p>
             </motion.div>
 
             {/* Node 3 (ACTIVE) */}
@@ -82,7 +82,7 @@ export default function CorePipeline() {
                 <span className="material-symbols-outlined text-primary text-2xl drop-shadow-[0_0_5px_currentColor]">psychology</span>
               </div>
               <h5 className="text-[10px] font-label font-bold text-primary mb-2 uppercase tracking-widest">Retrieval</h5>
-              <p className="text-[10px] text-on-surface-variant leading-tight opacity-90">Semantic search cycle</p>
+              <p className="text-[10px] text-on-surface-variant leading-tight dark:opacity-90">Semantic search cycle</p>
             </motion.div>
 
             {/* Node 4 */}
@@ -91,7 +91,7 @@ export default function CorePipeline() {
                 <span className="material-symbols-outlined text-secondary text-2xl">layers</span>
               </div>
               <h5 className="text-[10px] font-label font-bold text-primary mb-2 uppercase tracking-widest">Injection</h5>
-              <p className="text-[10px] text-on-surface-variant leading-tight opacity-70">Prompt assembly</p>
+              <p className="text-[10px] text-on-surface-variant leading-tight dark:opacity-70">Prompt assembly</p>
             </motion.div>
 
           </div>

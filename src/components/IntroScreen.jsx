@@ -41,7 +41,7 @@ export default function IntroScreen() {
       {/* Container for the exact Unicorn Studio Embed */}
       <div
         ref={containerRef}
-        className={`absolute inset-0 flex items-center justify-center scale-75 md:scale-100 origin-center pointer-events-auto transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'
+        className={`absolute inset-0 flex items-center justify-center scale-[0.85] md:scale-110 origin-center pointer-events-auto transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'
           }`}
       ></div>
 

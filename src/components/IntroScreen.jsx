@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-const embedCode = `<div style="width: 1440px; height: 900px" data-us-project="yMRr6ri2mB09ytxltXzl"></div>
+const embedCode = `<div style="width: 100%; height: 100%" data-us-project="yMRr6ri2mB09ytxltXzl"></div>
 <script type="text/javascript">!function(){var u=window.UnicornStudio;if(u&&u.init){if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",function(){u.init()})}else{u.init()}}else{window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.1.9/dist/unicornStudio.umd.js",i.onload=function(){if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",function(){UnicornStudio.init()})}else{UnicornStudio.init()}},(document.head||document.body).appendChild(i)}}();</script>`;
 
 export default function IntroScreen() {
@@ -41,13 +41,18 @@ export default function IntroScreen() {
       {/* Container for the exact Unicorn Studio Embed */}
       <div
         ref={containerRef}
-        className={`absolute inset-0 flex items-center justify-center scale-75 md:scale-100 origin-center pointer-events-auto transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'
+        className={`absolute inset-0 flex items-center justify-center pointer-events-auto transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'
           }`}
       ></div>
 
+      {/* Watermark Cover & Replacement */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center justify-center w-72 h-10 bg-white/95 shadow-[0_0_20px_20px_rgba(255,255,255,0.95)] z-[2147483647]">
+        <span className="text-black font-serif font-bold tracking-[0.15em] uppercase text-sm md:text-base z-10 relative">With SMRION LABS</span>
+      </div>
+
       {/* Floating Scroll Bridge Indicator (Visible on initial Landing view) */}
       <div className={`absolute bottom-8 right-6 md:bottom-12 md:right-12 flex items-center justify-center animate-[bounce_3s_infinite] z-40 transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-        <div 
+        <div
           onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
           className="flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/15 backdrop-blur-xl border border-white/30 shadow-[0_8px_32px_rgba(0,0,0,0.05)] hover:bg-white/25 transition-all duration-300 cursor-pointer group"
         >
@@ -61,3 +66,5 @@ export default function IntroScreen() {
     </div>
   );
 }
+
+

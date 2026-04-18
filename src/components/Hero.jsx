@@ -1,11 +1,13 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import { useTheme } from './ThemeContext'
 
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [typedLength, setTypedLength] = useState(0)
   const [showCursor, setShowCursor] = useState(true)
   const [heroPhase, setHeroPhase] = useState('typing')
+  const { theme } = useTheme()
 
   const userQuery =
     "Wait, didn’t we discuss a new vector indexing strategy last Tuesday? Remind me what we decided on the latency thresholds."
@@ -85,7 +87,7 @@ export default function Hero() {
         <h1 className="font-headline text-5xl md:text-7xl lg:text-[5.5rem] font-black tracking-tighter leading-[1.05] text-on-surface mb-8 drop-shadow-2xl">
           AI That <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d0bcff] via-[#b69df8] to-[#9a7ff0] drop-shadow-[0_0_20px_rgba(208,188,255,0.15)] italic py-2 pr-2">Remembers.</span><br/>Like It Should Have.
         </h1>
-        <p className="font-plex text-lg md:text-xl max-w-2xl mx-auto mb-16 leading-[1.72] tracking-[0.015em] text-white/58 font-light">
+        <p className="font-plex text-lg md:text-xl max-w-2xl mx-auto mb-16 leading-[1.72] tracking-[0.015em] text-on-surface-variant/80 dark:text-white/58 font-light">
           SMRION is a persistent memory layer that transforms stateless AI into evolving intelligence. Build models that learn with every interaction.
         </p>
         
@@ -94,7 +96,7 @@ export default function Hero() {
             Deploy Memory Layer
             <span className="material-symbols-outlined align-middle ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
           </button>
-          <button className="bg-[#07070a] border border-white/10 text-on-surface px-10 py-4 rounded-2xl font-headline font-bold text-lg hover:border-white/20 hover:bg-[#0a0a0f] transition-all duration-300 shadow-xl">
+          <button className="bg-surface-container-highest border border-outline-variant/30 text-on-surface px-10 py-4 rounded-2xl font-headline font-bold text-lg hover:border-outline-variant/60 hover:brightness-110 transition-all duration-300 shadow-xl">
             View Documentation
           </button>
         </div>
@@ -168,8 +170,8 @@ export default function Hero() {
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               className="w-full lg:w-[26rem] relative z-30 group"
             >
-              <div className="p-7 rounded-3xl rounded-bl-sm border border-white/10 bg-[#07070a]/90 backdrop-blur-2xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] group-hover:border-white/20 transition-colors">
-                <div className="flex items-center gap-3 mb-5 border-b border-white/5 pb-4">
+              <div className="p-7 rounded-3xl rounded-bl-sm border border-outline-variant/20 bg-surface-container/90 backdrop-blur-2xl shadow-xl group-hover:border-outline-variant/50 transition-colors">
+                <div className="flex items-center gap-3 mb-5 border-b border-outline-variant/10 pb-4">
                   <div className="w-8 h-8 rounded-[0.7rem] bg-secondary/15 flex items-center justify-center border border-secondary/20">
                     <span className="material-symbols-outlined text-secondary text-sm">person</span>
                   </div>
@@ -197,10 +199,9 @@ export default function Hero() {
             {/* CORE ENGINE DOMINANT CENTER */}
             <div className="relative flex flex-col items-center justify-center p-8 group z-20 xl:mx-8">
               <motion.div 
-                animate={{ scale: [1, 1.03, 1], boxShadow: ["0 0 20px rgba(130,112,255,0.08)", "0 0 34px rgba(130,112,255,0.14)", "0 0 20px rgba(130,112,255,0.08)"] }}
+                animate={{ scale: [1, 1.03, 1], boxShadow: ["0 0 20px var(--radial-glow)", "0 0 34px var(--radial-glow)", "0 0 20px var(--radial-glow)"] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="w-40 h-40 md:w-44 md:h-44 rounded-[2rem] border border-white/10 bg-[#050508] flex items-center justify-center relative z-10 shadow-2xl"
-                style={{ background: 'linear-gradient(135deg, #111116 0%, #050508 100%)' }}
+                className="w-40 h-40 md:w-44 md:h-44 rounded-[2rem] border border-outline-variant/20 bg-surface-container flex items-center justify-center relative z-10 shadow-2xl"
               >
                 <div className="relative z-10 flex flex-col items-center">
                   <span className="material-symbols-outlined text-primary text-5xl mb-2 drop-shadow-[0_0_12px_rgba(208,188,255,0.6)]">hub</span>
@@ -225,9 +226,9 @@ export default function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 6 }}
                     transition={{ duration: 0.5, ease: 'easeOut' }}
-                    className="p-7 rounded-3xl rounded-br-sm border border-primary/20 bg-[#07070a]/90 backdrop-blur-2xl shadow-[0_20px_40px_rgba(0,0,0,0.4),inset_0_0_30px_rgba(208,188,255,0.03)] group-hover:border-primary/40 group-hover:shadow-[0_20px_50px_rgba(130,112,255,0.1)] transition-all"
+                    className="p-7 rounded-3xl rounded-br-sm border border-primary/20 bg-surface-container/90 backdrop-blur-2xl shadow-xl group-hover:border-primary/40 group-hover:shadow-2xl transition-all"
                   >
-                    <div className="flex items-center justify-between mb-5 border-b border-white/5 pb-4">
+                    <div className="flex items-center justify-between mb-5 border-b border-outline-variant/10 pb-4">
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-[0.7rem] bg-primary flex items-center justify-center shadow-[0_0_15px_rgba(208,188,255,0.4)]">
                           <span className="material-symbols-outlined text-on-primary text-sm">smart_toy</span>
@@ -247,15 +248,15 @@ export default function Hero() {
                 ) : (
                   <motion.div
                     key="waiting"
-                    initial={{ opacity: 0.12 }}
-                    animate={{ opacity: heroPhase === 'processing' ? 0.5 : 0.12 }}
+                    initial={{ opacity: theme === 'light' ? 0.4 : 0.12 }}
+                    animate={{ opacity: heroPhase === 'processing' ? (theme === 'light' ? 0.8 : 0.5) : (theme === 'light' ? 0.4 : 0.12) }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.35, ease: 'easeOut' }}
-                    className="min-h-[170px] p-7 rounded-3xl rounded-br-sm border border-white/8 bg-[#07070a]/55 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.22)]"
+                    className="min-h-[170px] p-7 rounded-3xl rounded-br-sm border border-outline-variant/10 bg-surface-container-lowest/55 backdrop-blur-xl shadow-lg"
                   >
-                    <div className="flex items-center justify-between mb-5 border-b border-white/5 pb-4">
+                    <div className="flex items-center justify-between mb-5 border-b border-outline-variant/10 pb-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-[0.7rem] bg-white/5 flex items-center justify-center border border-white/8">
+                        <div className="w-8 h-8 rounded-[0.7rem] bg-surface-container/30 flex items-center justify-center border border-outline-variant/10">
                           <span className="material-symbols-outlined text-on-surface-variant text-sm">smart_toy</span>
                         </div>
                         <div className="font-label text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">SMRION Agent</div>
